@@ -60,3 +60,6 @@ db.sqlite3
 
 # PyCharm Excludes
 .idea
+
+# Media files.
+media/
