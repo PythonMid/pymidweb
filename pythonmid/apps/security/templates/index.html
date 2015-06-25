@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="{% static 'dist/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+<h1>Hola Mundo</h1>
+{% if user.is_authenticated %}
+    <h3>Bienvenido {{ user.first_name }} {{ user.last_name }}</h3>
+    <img src="{% get_media_prefix %}{{ user.userprofile.image }}">
+    <a href="{% url 'security:logout'%}">Logout</a>
+{% else %}
+    <a href="{% url 'social:begin' 'twitter' %}?next={{ request.path }}">Login with Twitter</a>
+{% endif %}
+<script src="{% static 'dist/jquery/jquery-1.11.2.min.js' %}"></script>
+<script src="{% static 'dist/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
