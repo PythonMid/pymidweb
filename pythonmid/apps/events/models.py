@@ -125,7 +125,8 @@ class Participation(models.Model):
     type = models.IntegerField(choices=PARTICIPATION_TYPE, help_text="Tipo de participación")
     title = models.CharField(max_length=600, help_text="Título de la participación")
     description = models.TextField(max_length=1000, help_text="Detalle de la participación")
-    duration = models.DurationField(help_text="Duración de la participación")
+    from_time = models.DateTimeField(help_text="Hora de inicio")
+    to_time = models.DateTimeField(help_text="Hora finaliza")
 
     def __str__(self):
         return self.title
