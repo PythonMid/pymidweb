@@ -9,4 +9,4 @@ class SponsorAdmin(admin.ModelAdmin):
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'image', 'is_organizer')
+    list_display = ('id', 'user', 'image', 'is_member')

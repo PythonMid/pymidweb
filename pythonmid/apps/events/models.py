@@ -42,6 +42,7 @@ class Place(models.Model):
 class Event(models.Model):
     name = models.CharField(max_length=500, help_text="Nombre del evento")
     description = models.TextField(max_length=1000, null=True, blank=True)
+    organizers = models.ManyToManyField(User, help_text="Organizadores del evento")
     sponsors = models.ManyToManyField(Sponsor, help_text="Patrocinadores del evento")
     from_datetime = models.DateTimeField(help_text="Fecha y hora de inicio")
     to_datetime = models.DateTimeField(help_text="Fecha y hora de finalización")
@@ -78,9 +79,17 @@ class Event(models.Model):
 
 @python_2_unicode_compatible
 class Attendee(models.Model):
+
+    I_WILL = (
+        (0, 'No'),
+        (1, 'Si'),
+        (2, 'Maybe'),
+    )
+
     user = models.ForeignKey(User, help_text="Participante del evento")
     event = models.ForeignKey(Event, help_text="Evento")
     timestamp = models.DateTimeField(auto_now_add=True, help_text="Fecha en que confirma su asistencia")
+    i_will = models.IntegerField(choices=I_WILL, default=2)
     receive_news = models.BooleanField(default=False, help_text="Activar si desea recibir noticias del evento")
 
     def __str__(self):

@@ -50,7 +50,8 @@ class Sponsor(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     image = models.ImageField(upload_to=user_image_path, null=True, blank=True)
-    is_organizer = models.BooleanField(default=False)
+    about = models.TextField(max_length=1000, null=True, blank=True, help_text="Breve biografía")
+    is_member = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username
