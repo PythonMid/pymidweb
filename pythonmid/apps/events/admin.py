@@ -5,6 +5,8 @@ from pythonmid.apps.events.models import Event, Participant, Participation, Plac
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'place', 'from_datetime', 'to_datetime', 'num_attendees', 'is_published')
+    filter_horizontal = ('sponsors', 'organizers',)
+
 
 @admin.register(Participant)
 class ParticipantAdmin(admin.ModelAdmin):
