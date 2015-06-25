@@ -1,4 +1,4 @@
-from urllib2 import urlopen
+from urllib.request import urlopen
 from django.core.files.base import ContentFile
 from social.backends.twitter import TwitterOAuth
 from pythonmid.apps.community.models import UserProfile
@@ -7,7 +7,6 @@ __author__ = 'alex'
 def update_user_social_data(strategy, *args, **kwargs):
     """Set the name and avatar for a user only if is new.
     """
-    print 'update_user_social_data ::', strategy
     if not kwargs['is_new']:
         return
     else:
